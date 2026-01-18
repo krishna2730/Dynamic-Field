@@ -1,6 +1,3 @@
-import React, { useState } from "react";
-
-
 function generateSchema(data) {
   if (data === null || data === undefined) {
     return { type: "null" };

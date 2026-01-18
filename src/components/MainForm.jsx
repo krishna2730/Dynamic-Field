@@ -1,18 +1,16 @@
 import { generateSchema, setValueByPath } from "../utils/schema";
 import DynamicField from "./DynamicField";
 import sampel1 from "../data/sample1.json";
-import sampel2 from "../data/sample2.json";
+// import sampel2 from "../data/sample2.json";
 import { useState } from "react";
 
 function MainForm() {
-  const initialConfig = sampel2;
+  const initialConfig = sampel1;
 
   const [config, setConfig] = useState(initialConfig);
   const [originalConfig, setOriginalConfig] = useState(initialConfig);
   const [schema, setSchema] = useState(() => generateSchema(initialConfig));
-  const [showPreview, setShowPreview] = useState(false);
-  const [showOriginalPreview, setShowOriginalPreview] = useState(false);
-  const [showSchemaPreview, setShowSchemaPreview] = useState(false);
+  const [showPreview, setShowPreview] = useState("hide");
   const [isSaved, setIsSaved] = useState(false);
   const [uploadError, setUploadError] = useState(null);
 
@@ -121,10 +119,32 @@ function MainForm() {
                 Upload JSON
               </button>
               <button
-                onClick={() => setShowPreview(!showPreview)}
+                onClick={() =>
+                  setShowPreview((prev) => (prev === "json" ? "hide" : "json"))
+                }
                 className="btn btn-secondary"
               >
-                {showPreview ? "Hide Preview" : "Show Preview"}
+                {"Show Preview"}
+              </button>
+              <button
+                onClick={() =>
+                  setShowPreview((prev) =>
+                    prev === "original" ? "hide" : "original"
+                  )
+                }
+                className="btn btn-secondary"
+              >
+                {"Show Original Preview"}
+              </button>
+              <button
+                onClick={() =>
+                  setShowPreview((prev) =>
+                    prev === "schema" ? "hide" : "schema"
+                  )
+                }
+                className="btn btn-secondary"
+              >
+                {"Show Schema Preview"}
               </button>
               <button onClick={handleExport} className="btn btn-secondary">
                 Export JSON
@@ -136,7 +156,7 @@ function MainForm() {
           </div>
         </div>
 
-        {showPreview && (
+        {showPreview === "json" && (
           <div className="preview-panel">
             <div className="preview-header">
               <h2 className="preview-title">JSON Preview</h2>
@@ -147,18 +167,18 @@ function MainForm() {
           </div>
         )}
 
-        {showPreview && (
+        {showPreview === "original" && (
           <div className="preview-panel">
             <div className="preview-header">
-              <h2 className="preview-title">original JSON Preview</h2>
+              <h2 className="preview-title">Original JSON Preview</h2>
             </div>
             <div className="preview-content">
-              <pre>{JSON.stringify(config, null, 2)}</pre>
+              <pre>{JSON.stringify(originalConfig, null, 2)}</pre>
             </div>
           </div>
         )}
 
-        {showPreview && (
+        {showPreview === "schema" && (
           <div className="preview-panel">
             <div className="preview-header">
               <h2 className="preview-title">Schema Preview</h2>

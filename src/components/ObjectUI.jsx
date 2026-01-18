@@ -1,4 +1,3 @@
-import { formatLabel } from "../utils/schema";
 import Card from "./Card";
 import DynamicField from "./DynamicField";
 
