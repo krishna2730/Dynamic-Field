@@ -1,0 +1,43 @@
+[
+  {
+    "id": 101,
+    "name": "Krishna",
+    "age": 23,
+    "isActive": true,
+    "email": "krishna@example.com",
+    "skills": ["Java", "Spring Boot", "JavaScript"],
+    "address": {
+      "city": "Ahmedabad",
+      "state": "Gujarat",
+      "pincode": 380015
+    },
+    "projects": [
+      {
+        "projectId": "P1",
+        "title": "Credential Issuance Platform",
+        "techStack": ["React", "Node.js", "Blockchain"],
+        "completed": true
+      },
+      {
+        "projectId": "P2",
+        "title": "NFC Mobile App",
+        "techStack": ["Flutter", "NFC"],
+        "completed": false
+      }
+    ],
+    "lastLogin": null
+  },
+  {
+    "id": 102,
+    "name": "Gama",
+    "age": 22,
+    "isActive": false,
+    "skills": [],
+    "address": {
+      "city": "Pune",
+      "state": "Maharashtra"
+    },
+    "projects": [],
+    "rating": 4.5
+  }
+]
